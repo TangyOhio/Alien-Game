@@ -12,6 +12,7 @@ class App extends Component {
     setInterval(() => {
       dispatch(moveObjects(this.canvasMousePosition))
     }, 10)
+    console.log(this.props)
   }
   
   trackMouse(event) {
@@ -34,7 +35,7 @@ App.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  angle: state.angle,
+  angle: state.move.angle,
 })
 
 export default connect(mapStateToProps)(App)
