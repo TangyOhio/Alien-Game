@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 const CurrentScore = (props) => {
   const scoreStyle = {
-    fontFamily: "'Press Start 2P', cursive",
+    fontFamily: '"Joti One", cursive',
     fontSize: 80,
     fill: '#d6d33e',
   }
