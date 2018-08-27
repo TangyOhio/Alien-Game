@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { getCanvasPosition } from './utils/formulas'
 import Canvas from './components/Canvas'
 import { moveObjects } from './reducers/moveObjects'
+import { startGame } from './reducers/startGame'
 
 class App extends Component {
 
@@ -26,10 +27,13 @@ class App extends Component {
   }
 
   render() {
+    const { dispatch, angle, gameState } = this.props
     return (
       <Canvas
-        angle={this.props.angle}
+        angle={angle}
         trackMouse={event => (this.trackMouse(event))}
+        gameState={gameState}
+        startGame={() => dispatch(startGame())}
       />
     )
   }
@@ -37,10 +41,16 @@ class App extends Component {
 
 App.propTypes = {
   angle: PropTypes.number.isRequired,
+  gameState: PropTypes.shape({
+    started: PropTypes.bool.isRequired,
+    kills: PropTypes.number.isRequired,
+    lives: PropTypes.number.isRequired,
+  }).isRequired,
 }
 
 const mapStateToProps = state => ({
   angle: state.move.angle,
+  gameState: state.start.gameState,
 })
 
 export default connect(mapStateToProps)(App)
