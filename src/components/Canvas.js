@@ -2,10 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Sky from './Sky'
 import Ground from './Ground'
-import CannonBase from './CannonBase'
-import CannonPipe from './CannonPipe'
-import CannonBall from './CannonBall'
 import CurrentScore from './CurrentScore'
+import CannonBase from './cannon/CannonBase'
+import CannonPipe from './cannon/CannonPipe'
+import CannonBall from './cannon/CannonBall'
+import FlyingObject from './flyingObjects/FlyingObject'
 
 const Canvas = (props) => {
   const viewBox = [window.innerWidth / -2, 100 - window.innerHeight, window.innerWidth, window.innerHeight]
@@ -26,6 +27,8 @@ const Canvas = (props) => {
       <CannonBase />
       <CannonBall position={{ x: 0, y: -100 }} />
       <CurrentScore score={15} />
+      <FlyingObject position={{ x: -150, y: -300 }} />
+      <FlyingObject position={{ x: 150, y: -300 }} />
     </svg>
   )
 }
