@@ -9,6 +9,8 @@ export const moveObjects = (mousePosition) => ({
 
 const initialState = {
   angle: 45,
+  flyingObjects: [],
+  lastObjectCreatedAt: new Date(),
 }
 
 const move = (state = initialState, action) => {

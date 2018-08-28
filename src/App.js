@@ -27,10 +27,11 @@ class App extends Component {
   }
 
   render() {
-    const { dispatch, angle, gameState } = this.props
+    const { dispatch, angle, flyingObjects, gameState } = this.props
     return (
       <Canvas
         angle={angle}
+        flyingObjects={flyingObjects}
         trackMouse={event => (this.trackMouse(event))}
         gameState={gameState}
         startGame={() => dispatch(startGame())}
@@ -41,6 +42,13 @@ class App extends Component {
 
 App.propTypes = {
   angle: PropTypes.number.isRequired,
+  flyingObjects: PropTypes.arrayOf(PropTypes.shape({
+    position: PropTypes.shape({
+      x: PropTypes.number.isRequired,
+      y: PropTypes.number.isRequired
+    }).isRequired,
+    id: PropTypes.number.isRequired,
+  })).isRequired,
   gameState: PropTypes.shape({
     started: PropTypes.bool.isRequired,
     kills: PropTypes.number.isRequired,
@@ -50,6 +58,7 @@ App.propTypes = {
 
 const mapStateToProps = state => ({
   angle: state.move.angle,
+  flyingObjects: state.move.flyingObjects,
   gameState: state.start.gameState,
 })
 
