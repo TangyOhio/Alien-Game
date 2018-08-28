@@ -1,5 +1,3 @@
-import startNew from '../utils/startNew'
-
 const START_GAME = 'START_GAME'
 
 export const startGame = () => ({
@@ -17,7 +15,7 @@ const initialGameState = {
 const start = (state = initialGameState, action) => {
   switch (action.type) {
     case START_GAME:
-      return startNew(state, initialGameState)
+      return { gameState: { started: true, kills: 0, lives: 3 }}
     default:
       return state
   }
