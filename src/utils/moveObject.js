@@ -1,6 +1,6 @@
 import React from 'react'
 import { calculateAngle } from './formulas'
-import FlyingObjectContainer from './FlyingObjectContainer'
+import createFlyingObjects from './createFlyingObjects'
 
 const moveObject = (state, action) => {
   const mousePosition = action.mousePosition || {
@@ -8,8 +8,8 @@ const moveObject = (state, action) => {
     y: 0,
   }
   
-  const newState = <FlyingObjectContainer reduxState={state} />
-
+  const newState = { createFlyingObjects, }
+  
   const { x, y } = mousePosition
   const angle = calculateAngle(0, 0, x, y)
   return {
