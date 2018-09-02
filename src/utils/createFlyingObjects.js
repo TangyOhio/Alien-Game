@@ -7,7 +7,7 @@ import {
   flyingObjectsStarterPositions
 } from '../utils/constants'
 
-class createFlyingObjects extends React.Component {
+class CreateFlyingObjects extends React.Component {
   
   checkGame = (props) => {
     if (!props.gameState.started) return props
@@ -39,13 +39,15 @@ class createFlyingObjects extends React.Component {
     this.checkGame(this.props)
     console.log('help')
     return {
-      flyingObjects: [
-        ...this.props.gameState.flyingObjects,
-        this.newFlyingObject
-      ],
-      lastObjectCreatedAt: new Date(),
-      gameState: {
-        ...this.props.gameState,
+      stuff: {
+        flyingObjects: [
+          ...this.props.gameState.flyingObjects,
+          this.newFlyingObject
+        ],
+        lastObjectCreatedAt: new Date(),
+        gameState: {
+          ...this.props.gameState,
+        }
       }
     }
   }
@@ -55,4 +57,4 @@ const mapStateToProps = state => ({
   gameState: state.start.gameState,
 })
 
-export default connect(mapStateToProps)(createFlyingObjects)
+export default connect(mapStateToProps)(CreateFlyingObjects)
