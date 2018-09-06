@@ -8,7 +8,7 @@ const moveObject = (state, action) => {
     y: 0,
   }
   
-  const newState = <CreateFlyingObjects />
+  let newState = <CreateFlyingObjects />
   console.log(newState)
 
   const { x, y } = mousePosition
